@@ -17,6 +17,25 @@ Make a VIP setting, and allow the user to type in an index that corresponds to t
 When VIP is not false, when the notify function is called, only the VIP will get notified. Everybody else will get console logged "sorry the store is not available today."
 */
 
+// Planning
+// function RegisterUser() --> adding users 
+// if(_age < 19) --> settings = true; and console.log("You are not allowed in here.");
+// if (_age >= 19) --> settings = false; and registry.push(_age); and console.log("You are allow to drink in here.");
+
+// function DisplayUsers() --> List out users with ages (just to see whether the change age works)
+
+//Challenge 1:
+// function PreviousAge() --> ask for previous age
+// function ChangingAge() --> ask for new age and remove the previous age
+
+// Challenge 2: 
+// function ToggleAlcohol() --> to toggle the VIP
+// function NotifyAll() --> to notify users with VIP
+
+let VIPlist = [];
+let VIPSetting = {
+  VIP: false,
+};
 let registry = [];
 let settings = {
   alcohol: false,
@@ -88,10 +107,26 @@ function ChangingAge(){
 //rename this to ToggleAlcohol
 function ToggleAlcohol(){
   //toggle alcohol setting
+  VIPSetting.VIP = !VIPSetting.VIP;
+  console.log("Your VIP setting is now:", VIPSetting.VIP);
+  StartApp();
+
 }
+
+
+// CHALLENGE 2
+// Make a VIP setting, and allow the user to type in an index that corresponds to the VIP. By default VIP is false, but the user can write "make vip", to assign a number to the VIP setting. The user can also write "cancel vip" to turn vip back to false.
+
+// When VIP is not false, when the notify function is called, only the VIP will get notified. Everybody else will get console logged "sorry the store is not available today."
 
 //rename this to NotifyAll
 function NotifyAll(){
+  if (VIPSetting = true) {
+    console.log("sorry the store is not available today.");
+  } else {
+    console.log("Notifyyyy !!!!");
+  }
+
   //go through the array to notify everyone
 }
 
@@ -105,8 +140,24 @@ function StartApp(){
     }  else if (_command === "change age") {
       _command = Number();
       PreviousAge();
+    }   else if (_command === "make vip") {
+      if (VIPSetting = true) {
+      readline.question("Please assign a number to the VIP setting ", _VIPnum => {
+        VIPlist.push(_VIPnum);
+        console.log("Your assign number is: ", _VIPnum);
+    });
+      } else {
+        console.log("You are not VIP!!");
+      }
+      StartApp();
+    } else if (_command === "cancel vip") {
+      ToggleAlcohol();
     } else if (_command === "list") {
       DisplayUsers();
+    } else if (_command === "notify") {
+      NotifyAll();
+    } else if (_command === "toggle") {
+      ToggleAlcohol();
     } else{
       StartApp();
     }
